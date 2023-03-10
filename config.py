@@ -1,6 +1,7 @@
 from dotenv import dotenv_values
+import os
 
-class Config:
+class DevConfig:
     """database config object"""
 
     env = dotenv_values(".env")
@@ -9,3 +10,8 @@ class Config:
 
     # disable modification tracking for better performance
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+class ProdConfig:
+    """Production Config object"""
+
+    DATABASE_URL = os.environ.get('DATABASE_URL')
