@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from config import DevConfig, ProdConfig
+from config import Config
 from flask_cors import CORS, cross_origin
 from database import db
 
-def create_app(config_class=DevConfig):
+def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
