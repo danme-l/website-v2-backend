@@ -22,7 +22,7 @@ def create_app(config_class=Config):
     return app
 
 app = create_app()
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
 # test route
 @app.route('/')
