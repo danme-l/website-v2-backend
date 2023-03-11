@@ -24,6 +24,13 @@ def create_app(config_class=Config):
 app = create_app()
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
+
 # test route
 @app.route('/')
 def hello_world():
