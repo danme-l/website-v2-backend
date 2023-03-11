@@ -12,4 +12,4 @@ typing_extensions==4.5.0
 Werkzeug==2.2.3
 gunicorn==20.0.4
 Flask-Cors
-Flas-SQLAlchemy
+Flask-SQLAlchemy
