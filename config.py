@@ -3,4 +3,5 @@ import os
 class Config:
     """Production Config object"""
 
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    # SQLAlchemy doesn't accept 'postgres://' anymore, but this is render's default
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL').replace("postgres://", "postgresql://")
