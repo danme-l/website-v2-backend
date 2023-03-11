@@ -3,4 +3,4 @@ import os
 class Config:
     """Production Config object"""
 
-    DATABASE_URL = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
