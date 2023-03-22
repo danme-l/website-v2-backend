@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
-from config import DevConfig, ProdConfig
+from config import Config
 from flask_cors import CORS, cross_origin
 from database import db
 
-def create_app(config_class=DevConfig):
+def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(config_class)
 
@@ -22,7 +22,14 @@ def create_app(config_class=DevConfig):
     return app
 
 app = create_app()
-cors = CORS(app)
+cors = CORS(app, resources={r"/*": {"origins": "*"}})
+
+@app.after_request
+def add_cors_headers(response):
+    response.headers.add('Access-Control-Allow-Origin', '*')
+    response.headers.add('Access-Control-Allow-Headers', 'Content-Type,Authorization')
+    response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
+    return response
 
 # test route
 @app.route('/')
