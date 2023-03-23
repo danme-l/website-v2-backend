@@ -19,6 +19,16 @@ def create_app(config_class=Config):
     app.register_blueprint(weo_bp)
     app.register_blueprint(econ_bp, url_prefix='/econ')
 
+    # test route
+    @app.route('/')
+    def hello_world():
+        return "Hello, World!"
+
+    # error handler
+    @app.errorhandler(404)
+    def not_found(error):
+        return jsonify({"error": "Not Found"}), 404
+
     return app
 
 app = create_app()
@@ -31,15 +41,7 @@ def add_cors_headers(response):
     response.headers.add('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS')
     return response
 
-# test route
-@app.route('/')
-def hello_world():
-    return "Hello, World!"
 
-# error handler
-@app.errorhandler(404)
-def not_found(error):
-    return jsonify({"error": "Not Found"}), 404
 
 if __name__ == '__main__':
     app.run()
