@@ -44,6 +44,4 @@ def add_cors_headers(response):
     return response
 
 if __name__ == '__main__':
-    from config import TestConfig
-    app = create_app(TestConfig)
     app.run()
