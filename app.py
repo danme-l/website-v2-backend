@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from config import Config, TestConfig
+from config import Config
 from flask_cors import CORS, cross_origin
 from database import db
 
@@ -44,5 +44,6 @@ def add_cors_headers(response):
     return response
 
 if __name__ == '__main__':
+    from config import TestConfig
     app = create_app(TestConfig)
     app.run()
