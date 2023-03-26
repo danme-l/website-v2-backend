@@ -6,7 +6,7 @@ from flask_cors import cross_origin
 money_supply_bp = Blueprint('money_supply_bp', __name__)
 
 @money_supply_bp.route('/money_supply', methods=['GET'])
-# @cross_origin()
+@cross_origin()
 def money_supply():
     money_supply = db.session.query(MoneySupplyTable).all()
     return jsonify([rec.serialize() for rec in money_supply])
