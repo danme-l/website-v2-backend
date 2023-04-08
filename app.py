@@ -15,11 +15,13 @@ def create_app(config_class=Config):
     from controllers.weo.weo_controller import weo_bp
     from controllers.econ.econ_controller import econ_bp
     from controllers.money_supply.money_supply_controller import money_supply_bp
+    from controllers.oil.oil_controller import oil_production_bp
 
     # register controllers
     app.register_blueprint(weo_bp)
     app.register_blueprint(econ_bp, url_prefix='/econ')
     app.register_blueprint(money_supply_bp)
+    app.register_blueprint(oil_production_bp, url_prefix='/oil')
 
     # test route
     @app.route('/')
