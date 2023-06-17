@@ -26,7 +26,7 @@ def create_app(config_class=Config):
     # test route
     @app.route('/')
     def hello_world():
-        return "Hello, World!"
+        return "Izzy is pretty"
 
     # error handler
     @app.errorhandler(404)
